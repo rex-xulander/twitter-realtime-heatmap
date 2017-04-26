@@ -39,7 +39,8 @@ def tail_mongo_thread():
     print "beginning to tail..."
     db = MongoClient().tstream
     coll = db.tweets_tail
-    cursor = coll.find({"coordinates.type" : "Point" }, {"coordinates" :1},tailable=True,timeout=False)
+    cursor = coll.find({"coordinates.type" : "Point" }, {"coordinates" :1},
+    cursor_type=pymongo.CursorType.TAILABLE_AWAIT,timeout=False)
     ci=0
     while cursor.alive:
         try:

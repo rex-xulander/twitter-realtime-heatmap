@@ -22,7 +22,7 @@ auth1.set_access_token(access_token_key, access_token_secret)
 class StreamListener(tweepy.StreamListener):
     mongocon = MongoClient()
     db = mongocon.tstream
-    col = db.tweets_tail
+    col = db.tweets
     json = import_simplejson()
 
 
@@ -42,5 +42,5 @@ class StreamListener(tweepy.StreamListener):
 
 l = StreamListener()
 streamer = tweepy.Stream(auth=auth1, listener=l)
-setTerms = ['bigdata', 'devops', 'hadoop', 'twitter']
+setTerms = ['bigdata', 'hadoop', 'twitter']
 streamer.filter(track = setTerms)

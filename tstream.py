@@ -22,7 +22,7 @@ auth1.set_access_token(access_token_key, access_token_secret)
 class StreamListener(tweepy.StreamListener):
     mongocon = MongoClient()
     db = mongocon.tstream
-    col = db.tweets
+    col = db.tweets_tail
     json = import_simplejson()
 
 

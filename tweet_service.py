@@ -18,6 +18,7 @@ import redis
 import threading
 import signal
 import sys
+import pymongo
 from flask import Flask
 from flask import request
 from flask import abort
@@ -25,6 +26,7 @@ from flask import url_for
 from flask import make_response
 from flask import Response
 from pymongo import MongoClient
+from pymongo import CursorType
 from bson import json_util
 from threading import Thread
 
@@ -39,8 +41,7 @@ def tail_mongo_thread():
     print "beginning to tail..."
     db = MongoClient().tstream
     coll = db.tweets_tail
-    cursor = coll.find({"coordinates.type" : "Point" }, {"coordinates" :1},
-    cursor_type=pymongo.CursorType.TAILABLE_AWAIT,timeout=False)
+    cursor = coll.find({"coordinates.type" : "Point" }, {"coordinates" :1}, cursor_type = CursorType.TAILABLE_AWAIT)
     ci=0
     while cursor.alive:
         try:

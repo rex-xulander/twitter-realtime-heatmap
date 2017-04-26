@@ -4,18 +4,17 @@ from pymongo import MongoClient
 from bson import json_util
 from tweepy.utils import import_simplejson
 
-
 json = import_simplejson()
 mongocon = MongoClient()
 
 db = mongocon.tstream
 col = db.tweets_tail
 
-consumer_key = ''
-consumer_secret = ''
+consumer_key = '6Jq90RtRfmxTK40TftqZlKuDg'
+consumer_secret = 'NjsUmyITJsQNzbCQ09ccnKQIjAvo5cD0sVGujDokuwoPrd5sAz'
 
-access_token_key = ''
-access_token_secret = ''
+access_token_key = '710573731689603072-t9a2eOhPkqxLZQZQiEccp2MAVuphQQp'
+access_token_secret = 'wzk08UtwRMgUNJUTd1nBIkE9Y49aPeiKdf46j5uI537wp'
 
 auth1 = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth1.set_access_token(access_token_key, access_token_secret)

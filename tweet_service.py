@@ -31,7 +31,7 @@ from bson import json_util
 from threading import Thread
 
 
-red = redis.StrictRedis()
+red = redis.redis()
 
 def signal_handler(signal, frame):
     print 'You pressed Ctrl+C!'

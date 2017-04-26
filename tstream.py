@@ -1,12 +1,12 @@
 import tweepy
 import json
-from pymongo import Connection
+from pymongo import MongoClient
 from bson import json_util
 from tweepy.utils import import_simplejson
 
 
 json = import_simplejson()
-mongocon = Connection()
+mongocon = MongoClient()
 
 db = mongocon.tstream
 col = db.tweets_tail
@@ -21,12 +21,12 @@ auth1 = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth1.set_access_token(access_token_key, access_token_secret)
 
 class StreamListener(tweepy.StreamListener):
-    mongocon = Connection()
+    mongocon = MongoClient()
     db = mongocon.tstream
     col = db.tweets
     json = import_simplejson()
 
-    
+
     def on_status(self, tweet):
         print 'Ran on_status'
 
